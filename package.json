@@ -1,23 +1,17 @@
 {
-  "name": "com.intesis.acwm",
+  "name": "com.intesis.ac",
   "version": "1.0.0",
-  "description": "Homey app to control Intesis wifi airconditioners",
-  "main": "app.js",
-  "dependencies": {
-     "acwm-api": "1.0.0"
-  },
-  "devDependencies": {},
+  "main": "app.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nlrb/com.intesis.acwm.git"
-  },
-  "author": "Ramon Baas",
-  "license": "GPL3",
-  "bugs": {
-    "url": "https://github.com/nlrb/com.intesis.acwm/issues"
-  },
-  "homepage": "https://github.com/nlrb/com.intesis.acwm#readme"
+  "devDependencies": {
+    "@tsconfig/node12": "^1.0.9",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.1",
+    "@types/node": "^17.0.35",
+    "eslint": "^7.32.0",
+    "eslint-config-athom": "^3.0.1",
+    "typescript": "^4.6.4"
+  }
 }

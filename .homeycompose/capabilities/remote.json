@@ -1,0 +1,12 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Remote enabled",
+    "nl": "Afstandsbediening ingeschakeld"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/images/remote.svg",
+  "insights": false
+}

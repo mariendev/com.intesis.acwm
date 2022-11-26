@@ -1,0 +1,41 @@
+{
+  "name": {
+    "en": "MH-AC-WIFI-1"
+  },
+  "class": "thermostat",
+  "capabilities": [
+    "onoff",
+    "thermostat_mode_mh",
+    "fan_rate_mh",
+    "vane_updown_position_mh",
+    "target_temperature.inside",
+    "measure_temperature.inside",
+    "measure_temperature_inside",
+    "measure_temperature_outside",
+    "remote_mh",
+    "remote"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "discovery": "find_devices",
+  "connectivity": [
+    "lan"
+  ],
+  "pair": [
+    {
+      "id": "list_my_devices",
+      "template": "list_devices",
+      "navigation": { "next": "add_my_devices" }
+    },
+    {
+      "id": "add_my_devices",
+      "template": "add_devices"
+    }
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/large.png"
+  }
+}

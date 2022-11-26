@@ -1,0 +1,46 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Operation mode",
+    "nl": "Bedrijfsmodus"
+  },
+  "getable": true,
+  "setable": true,
+  "values": [
+    {
+      "id": "0",
+      "title": {
+        "en": "Auto",
+        "nl": "Auto"
+      }
+    },
+    {
+      "id": "4",
+      "title": {
+        "en": "Cool",
+        "nl": "Koelen"
+      }
+    },
+    {
+      "id": "1",
+      "title": {
+        "en": "Heat",
+        "nl": "Verwarmen"
+      }
+    },
+    {
+      "id": "3",
+      "title": {
+        "en": "Fan",
+        "nl": "Ventilator"
+      }
+    },
+    {
+      "id": "2",
+      "title": {
+        "en": "Dry",
+        "nl": "Drogen"
+      }
+    }
+  ]
+}

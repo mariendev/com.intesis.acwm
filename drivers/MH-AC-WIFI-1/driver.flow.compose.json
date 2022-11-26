@@ -1,0 +1,378 @@
+{
+  "triggers": [
+    {
+      "id": "remote_true",
+      "title": {
+        "en": "Remote enabled",
+        "nl": "Afstandsbediening ingeschakeld"
+      }
+    },
+    {
+      "id": "remote_false",
+      "title": {
+        "en": "Remote disabled",
+        "nl": "Afstandsbediening uitgeschakeld"
+      }
+    },
+    {
+      "id": "thermostat_mode_mh_changed",
+      "title": {
+        "en": "Operation mode changed",
+        "nl": "Bedrijfsmodus gewijzigd"
+      }
+    },
+    {
+      "id": "vane_updown_position_mh_changed",
+      "title": {
+        "en": "Vane position changed",
+        "nl": "Bladrichting gewijzigd"
+      }
+    },
+    {
+      "id": "fan_rate_mh_changed",
+      "title": {
+        "en": "Fan speed changed",
+        "nl": "Ventilatorsnelheid gewijzigd"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "id": "remote",
+      "title": {
+        "en": "Remote is !{{enabled|disabled}}",
+        "nl": "Afstandsbediening is !{{ingeschakeld|uitgeschakeld}}"
+      }
+    },
+    {
+      "id": "fanrate",
+      "title": {
+        "en": "Fan speed !{{is|isn't}}...",
+        "nl": "Ventilatorsnelheid !{{is|is niet}}..."
+      },
+      "titleFormatted": {
+        "en": "Fan speed !{{is|isn't}} [[when]]",
+        "nl": "Ventilatorsnelheid !{{is|is niet}} [[when]]"
+      },
+      "args": [
+        {
+          "name": "when",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "0",
+              "title": {
+                "en": "Auto",
+                "nl": "Auto"
+              }
+            },
+            {
+              "id": "1",
+              "title": {
+                "en": "Level 1",
+                "nl": "Niveau 1"
+              }
+            },
+            {
+              "id": "2",
+              "title": {
+                "en": "Level 2",
+                "nl": "Niveau 2"
+              }
+            },
+            {
+              "id": "3",
+              "title": {
+                "en": "Level 3",
+                "nl": "Niveau 3"
+              }
+            },
+            {
+              "id": "4",
+              "title": {
+                "en": "Level 4",
+                "nl": "Niveau 4"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thermostat_mode",
+      "title": {
+        "en": "Thermostat mode !{{is|isn't}}...",
+        "nl": "Thermostaatmodus !{{is|is niet}}..."
+      },
+      "titleFormatted": {
+        "en": "Thermostat mode !{{is|isn't}} [[mode]]",
+        "nl": "Thermostaatmodus !{{is|is niet}} [[mode]]"
+      },
+      "args": [
+        {
+          "type": "dropdown",
+          "name": "mode",
+          "title": {
+            "en": "Thermostat mode",
+            "nl": "Thermostaatmodus"
+          },
+          "values": [
+            {
+              "id": "0",
+              "title": {
+                "en": "Auto",
+                "nl": "Auto"
+              }
+            },
+            {
+              "id": "4",
+              "title": {
+                "en": "Cool",
+                "nl": "Koelen"
+              }
+            },
+            {
+              "id": "1",
+              "title": {
+                "en": "Heat",
+                "nl": "Verwarmen"
+              }
+            },
+            {
+              "id": "3",
+              "title": {
+                "en": "Fan",
+                "nl": "Ventilator"
+              }
+            },
+            {
+              "id": "2",
+              "title": {
+                "en": "Dry",
+                "nl": "Drogen"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "temperature",
+      "title": {
+        "en": "Set temperature",
+        "nl": "Stel temperatuur in"
+      },
+      "titleFormatted": {
+        "en": "Set temperature on [[degrees]]",
+        "nl": "Zet temperatuur op [[degrees]]"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "degrees",
+          "title": {
+            "en": "Degrees",
+            "nl": "Graden"
+          },
+          "min": 18,
+          "max": 30,
+          "step": 1,
+          "placeholder": {
+            "en": "In degree celsius",
+            "nl": "In graden celsius"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thermostat_mode",
+      "title": {
+        "en": "Set thermostat mode",
+        "nl": "Stel thermostaatmodus in"
+      },
+      "titleFormatted": {
+        "en": "Set thermostat mode on [[mode]]",
+        "nl": "Zet thermostaatmodus op [[mode]]"
+      },
+      "args": [
+        {
+          "type": "dropdown",
+          "name": "mode",
+          "title": {
+            "en": "Thermostat mode",
+            "nl": "Thermostaatmodus"
+          },
+          "values": [
+            {
+              "id": "0",
+              "title": {
+                "en": "Auto",
+                "nl": "Auto"
+              }
+            },
+            {
+              "id": "4",
+              "title": {
+                "en": "Cool",
+                "nl": "Koelen"
+              }
+            },
+            {
+              "id": "1",
+              "title": {
+                "en": "Heat",
+                "nl": "Verwarmen"
+              }
+            },
+            {
+              "id": "3",
+              "title": {
+                "en": "Fan",
+                "nl": "Ventilator"
+              }
+            },
+            {
+              "id": "2",
+              "title": {
+                "en": "Dry",
+                "nl": "Drogen"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fanrate",
+      "title": {
+        "en": "Set fan rate",
+        "nl": "Stel ventilatorsnelheid in"
+      },
+      "titleFormatted": {
+        "en": "Set fan rate on [[rate]]",
+        "nl": "Zet ventilatorsnelheid op [[rate]]"
+      },
+      "args": [
+        {
+          "type": "dropdown",
+          "name": "rate",
+          "title": {
+            "en": "Fan rate",
+            "nl": "Ventilatorsnelheid"
+          },
+          "values": [
+            {
+              "id": "0",
+              "title": {
+                "en": "Auto",
+                "nl": "Auto"
+              }
+            },
+            {
+              "id": "1",
+              "title": {
+                "en": "Level 1",
+                "nl": "Niveau 1"
+              }
+            },
+            {
+              "id": "2",
+              "title": {
+                "en": "Level 2",
+                "nl": "Niveau 2"
+              }
+            },
+            {
+              "id": "3",
+              "title": {
+                "en": "Level 3",
+                "nl": "Niveau 3"
+              }
+            },
+            {
+              "id": "4",
+              "title": {
+                "en": "Level 4",
+                "nl": "Niveau 4"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vane_updown_position",
+      "title": {
+        "en": "Set vane position",
+        "nl": "Stel blad richting in"
+      },
+      "titleFormatted": {
+        "en": "Set vane position on [[position]]",
+        "nl": "Zet blad richting op [[position]]"
+      },
+      "args": [
+        {
+          "type": "dropdown",
+          "name": "position",
+          "title": {
+            "en": "Vane position",
+            "nl": "Blad richting"
+          },
+          "values": [
+            {
+              "id": "1",
+              "title": {
+                "en": "Position 1",
+                "nl": "Positie 1"
+              }
+            },
+            {
+              "id": "2",
+              "title": {
+                "en": "Position 2",
+                "nl": "Positie 2"
+              }
+            },
+            {
+              "id": "3",
+              "title": {
+                "en": "Position 3",
+                "nl": "Positie 3"
+              }
+            },
+            {
+              "id": "4",
+              "title": {
+                "en": "Position 4",
+                "nl": "Positie 4"
+              }
+            },
+            {
+              "id": "10",
+              "title": {
+                "en": "Swing",
+                "nl": "Zwenken"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "remote_true",
+      "title": {
+        "en": "Enable remote",
+        "nl": "Afstandsbediening aan"
+      }
+    },
+    {
+      "id": "remote_false",
+      "title": {
+        "en": "Disable remote",
+        "nl": "Afstandsbediening uit"
+      }
+    }
+  ]
+}

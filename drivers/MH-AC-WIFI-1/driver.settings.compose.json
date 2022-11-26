@@ -1,0 +1,63 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Account",
+      "nl": "Account"
+    },
+    "children": [
+      {
+        "id": "username",
+        "type": "text",
+        "label": {
+          "en": "Username",
+          "nl": "Gebruikersnaam"
+        },
+        "hint": {
+          "en": "Default: admin",
+          "nl": "Standaard: admin"
+        },
+        "value": "admin"
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "label": {
+          "en": "Password",
+          "nl": "Wachtwoord"
+        },
+        "hint": {
+          "en": "Default: admin",
+          "nl": "Standaard: admin"
+        },
+        "value": "admin"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Refresh rate",
+      "nl": "Ververssnelheid"
+    },
+    "children": [
+      {
+        "id": "interval",
+        "type": "number",
+        "label": {
+          "en": "Polling interval",
+          "nl": "Gegevens opvragen elke"
+        },
+        "hint": {
+          "en": "Every x seconds the app will refresh its information.",
+          "nl": "Iedere x seconden zal de app gegevens verversen."
+        },
+        "value": 10,
+        "attr": {
+          "min": 5,
+          "max": 60
+        }
+      }
+    ]
+  }
+]

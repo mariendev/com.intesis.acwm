@@ -1,0 +1,46 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Vane position",
+    "nl": "Blad richting"
+  },
+  "getable": true,
+  "setable": true,
+  "values": [
+    {
+      "id": "1",
+      "title": {
+        "en": "Position 1",
+        "nl": "Positie 1"
+      }
+    },
+    {
+      "id": "2",
+      "title": {
+        "en": "Position 2",
+        "nl": "Positie 2"
+      }
+    },
+    {
+      "id": "3",
+      "title": {
+        "en": "Position 3",
+        "nl": "Positie 3"
+      }
+    },
+    {
+      "id": "4",
+      "title": {
+        "en": "Position 4",
+        "nl": "Positie 4"
+      }
+    },
+    {
+      "id": "10",
+      "title": {
+        "en": "Swing",
+        "nl": "Zwenken"
+      }
+    }
+  ]
+}

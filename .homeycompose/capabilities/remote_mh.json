@@ -1,0 +1,25 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Remote enabled",
+    "nl": "Afstandsbediening ingeschakeld"
+  },
+  "getable": true,
+  "setable": true,
+  "values": [
+    {
+      "id": "0",
+      "title": {
+        "en": "Enabled",
+        "nl": "Ingeschakeld"
+      }
+    },
+    {
+      "id": "1",
+      "title": {
+        "en": "Disabled",
+        "nl": "Uitgeschakeld"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Fan speed",
+    "nl": "Ventilatorsnelheid"
+  },
+  "getable": true,
+  "setable": true,
+  "values": [
+    {
+      "id": "0",
+      "title": {
+        "en": "Auto",
+        "nl": "Auto"
+      }
+    },
+    {
+      "id": "1",
+      "title": {
+        "en": "Level 1",
+        "nl": "Niveau 1"
+      }
+    },
+    {
+      "id": "2",
+      "title": {
+        "en": "Level 2",
+        "nl": "Niveau 2"
+      }
+    },
+    {
+      "id": "3",
+      "title": {
+        "en": "Level 3",
+        "nl": "Niveau 3"
+      }
+    },
+    {
+      "id": "4",
+      "title": {
+        "en": "Level 4",
+        "nl": "Niveau 4"
+      }
+    }
+  ]
+}

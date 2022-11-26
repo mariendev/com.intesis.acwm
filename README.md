@@ -2,7 +2,7 @@
 
 Homey app to control your air-conditioner via the Intesis Airconwithme wifi module web server.
 
-*There is no plan to publish this in the Athom app-store, please install it via the CLI.*
+Continued work on the Intesis code from [Ramón Baas](url=https://github.com/nlrb/com.intesis.acwm)
 
 Thanks to Peter Eier; used his [Daikin AI](url=https://github.com/PeterEIER/nl.climate.daikin) code as a starting point for the Homey app.
 

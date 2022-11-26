@@ -1,0 +1,41 @@
+{
+  "id": "com.intesis",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#043d5d",
+  "platforms": [
+    "local"
+  ],
+  "tags": {
+    "en": [
+      "Intesis",
+      "Airconwithme"
+    ],
+    "nl": [
+      "Intesis",
+      "Airconwithme"
+    ]
+  },
+  "name": {
+    "en": "Intesis",
+    "nl": "Intesis"
+  },
+  "description": {
+    "en": "AC Interfaces Gateways",
+    "en": "AC Interfaces Gateways"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "./assets/images/small.png",
+    "large": "./assets/images/large.png",
+    "xlarge": "./assets/images/large.png"
+  },
+  "author": {
+    "name": "Marien den Besten",
+    "email": "marien@sitsat.nl"
+  }
+}
