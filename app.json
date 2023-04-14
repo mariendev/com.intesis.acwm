@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "brandColor": "#043d5d",
+  "brandColor": "#3366FF",
   "platforms": [
     "local"
   ],
@@ -23,17 +23,17 @@
     "nl": "Intesis AirConWithMe"
   },
   "description": {
-    "en": "AC Interfaces Gateways",
-    "nl": "AC Interfaces Gateways"
+    "en": "Your air conditioner always with you",
+    "nl": "Je air conditioner altijd bij je"
   },
   "category": [
     "climate"
   ],
   "permissions": [],
   "images": {
-    "small": "./assets/images/small.png",
-    "large": "./assets/images/large.png",
-    "xlarge": "./assets/images/large.png"
+    "small": "./assets/images/app_small.png",
+    "large": "./assets/images/app_large.png",
+    "xlarge": "./assets/images/app_xlarge.png"
   },
   "author": {
     "name": "Marien den Besten",
@@ -543,9 +543,9 @@
         }
       ],
       "images": {
-        "small": "/drivers/mh-ac-wifi-1/assets/images/small.png",
-        "large": "/drivers/mh-ac-wifi-1/assets/images/large.png",
-        "xlarge": "/drivers/mh-ac-wifi-1/assets/images/large.png"
+        "small": "/drivers/mh-ac-wifi-1/assets/images/image_small.jpg",
+        "large": "/drivers/mh-ac-wifi-1/assets/images/image_large.jpg",
+        "xlarge": "/drivers/mh-ac-wifi-1/assets/images/image_xlarge.jpg"
       },
       "id": "mh-ac-wifi-1",
       "settings": [
