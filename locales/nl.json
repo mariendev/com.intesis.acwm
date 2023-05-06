@@ -1,0 +1,10 @@
+{
+  "pair": {
+    "title": "Koppelen met IP",
+    "subtitle": "Voer het IP in van je apparaat",
+    "label_ip": "IP adres",
+    "verify": "Verifiëer",
+    "verifying": "Verifiëren",
+    "error": "Apparaat niet bereikbaar of compatible"
+  }
+}

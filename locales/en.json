@@ -1,1 +1,10 @@
-{}
+{
+  "pair": {
+    "title": "Pair by IP",
+    "subtitle": "Enter the IP from your device",
+    "label_ip": "IP address",
+    "verify": "Verify",
+    "verifying": "Verifying",
+    "error": "Device not reachable or compatible"
+  }
+}

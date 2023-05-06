@@ -6,6 +6,7 @@ export class MhAcWifi1 extends Homey.Device {
     private pollTimer!: NodeJS.Timer;
     private blindTimeTimer!: NodeJS.Timer;
     private blindTime: boolean = false;
+    private unavailableRetries: number = 0;
 
     /**
      * onInit is called when the device is initialized.
@@ -20,6 +21,8 @@ export class MhAcWifi1 extends Homey.Device {
         this.registerCapabilityListener('target_temperature.inside', this.onSetPoint.bind(this));
 
         const {address} = this.getStore();
+
+        this.log('Initializing ' + address + ' API available? ' + (this.api === undefined ? 'No' : 'Yes'));
 
         if (address != null && this.api === undefined) {
             this.api = new API(address);
@@ -40,14 +43,17 @@ export class MhAcWifi1 extends Homey.Device {
      * @private
      */
     private enforceBlindTime() {
-        if(this.blindTimeTimer != null) {
+        if (this.blindTimeTimer != null) {
             clearTimeout(this.blindTimeTimer);
         }
         this.blindTime = true;
-        this.blindTimeTimer = setTimeout(() => {
+
+        let cb = () => {
             this.blindTime = false;
-            this.updateAllValues().then()
-        }, 5000);
+            this.updateAllValues().then().catch(err => this.error(err));
+        };
+
+        this.blindTimeTimer = setTimeout(cb.bind(this), 5000);
     }
 
     async onPowerOnoff(value: any) {
@@ -111,11 +117,24 @@ export class MhAcWifi1 extends Homey.Device {
     }
 
     async updateAllValues() {
+        if (!this.getAvailable() && this.unavailableRetries <= 5) {
+            this.unavailableRetries++;
+            this.log(this.getName() + ' not available, retry connect ' + this.unavailableRetries);
+            const {password, username} = this.getSettings();
+            await this.login(username, password);
+        }
+
         if (!this.api || !this.getAvailable() || this.blindTime) {
             return;
         }
-
-        const result = await this.api.getDataPointValue();
+        this.unavailableRetries = 0;
+        let result;
+        try {
+            result = await this.api.getDataPointValue();
+        } catch (err) {
+            this.error(err);
+            return;
+        }
 
         for (let x of result) {
             try {
@@ -151,7 +170,7 @@ export class MhAcWifi1 extends Homey.Device {
                         break;
                 }
             } catch (e) {
-                this.log(e)
+                this.error(e)
             }
         }
     }
@@ -161,7 +180,7 @@ export class MhAcWifi1 extends Homey.Device {
         if (this.pollTimer != null) {
             clearInterval(this.pollTimer);
         }
-        this.pollTimer = setInterval(this.updateAllValues, (interval ?? 10) * 1000);
+        this.pollTimer = setInterval(this.updateAllValues.bind(this), (interval ?? 10) * 1000);
     }
 
     /**
@@ -193,18 +212,18 @@ export class MhAcWifi1 extends Homey.Device {
 
     async login(username: string, password: string, throwError: boolean = false) {
         if (!this.api) {
-            this.log('Intesis API not available');
-            await this.setUnavailable();
+            await this.setUnavailable('Intesis API not available');
             return;
         }
 
         try {
             await this.api.login(username, password);
         } catch (e: any) {
+            this.error('Login error: ' + e.error.message);
             if (throwError) {
                 throw Error(e.error.message);
             }
-            await this.setUnavailable(e.error.message);
+            await this.setUnavailable('Error ' + e.error.message);
             if (e.error.code !== 5) {
                 this.error(e);
             }

@@ -1,0 +1,66 @@
+<p class="homey-subtitle" data-i18n="pair.subtitle"></p>
+<fieldset class="homey-form-fieldset">
+    <div class="homey-form-group">
+        <label for="ip" class="homey-form-label"><span data-i18n="pair.label_ip"></span></label>
+        <input id="ip" class="homey-form-input" type="text" value=""/>
+    </div>
+</fieldset>
+<button id="verify" class="homey-button-primary-full" data-i18n="pair.verify" onclick="IPChanged()"></button>
+
+<script type="application/javascript">
+
+    Homey.setTitle(Homey.__("pair.title"));
+
+    let interval = null;
+
+    function IPChanged() {
+        let ip = document.getElementById('ip')
+        let button = document.getElementById('verify');
+        let basicText = Homey.__('pair.verifying');
+        ip.disabled = true;
+        button.disabled = true;
+        button.classList.add('is-disabled');
+        button.innerText = basicText;
+
+        interval = window.setInterval(function () {
+            if (button.innerText.length > (basicText.length + 3)) {
+                button.innerText = basicText;
+            } else {
+                button.innerText += ".";
+            }
+        }, 1000);
+
+        Homey.emit("ipVerify", ip.value).then(function (result) {
+            console.log('Received result: ' + (result ? 1 : 0));
+            if (result !== false) {
+                //build device
+                Homey.createDevice({
+                    name: 'MH-AC-WIFI-1 (' + ip.value + ')',
+                    data: {
+                        id: result,
+                    },
+                    store: {
+                        address: ip.value,
+                    },
+                }).then(function () {
+                    Homey.done();
+                }).catch(function (error) {
+                    Homey.alert(error);
+                });
+                return;
+            }
+            reset(Homey.__('pair.error', {}));
+        }).catch(err => {
+            reset(err);
+        });
+
+        function reset(msg) {
+            clearInterval(interval);
+            ip.disabled = false;
+            button.disabled = false;
+            button.classList.remove('is-disabled');
+            button.innerText = Homey.__('pair.verify');
+            Homey.alert(msg);
+        }
+    }
+</script>

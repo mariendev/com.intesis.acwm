@@ -41,15 +41,12 @@ class IntesisACWM {
                 response.on('end', () => {
                     if (statusCode === 200) {
                         this.ref = JSON.parse(zlib.unzipSync(new Buffer(data, 'utf8')).toString())
-                        this.initDone = true
                         resolve(this.ref)
                     } else {
                         reject('Cannot load ' + url.path)
                     }
                 })
-                response.on('error', (error) => {
-                    reject(error)
-                })
+                response.on('error', reject);
             })
         })
     }
@@ -69,7 +66,8 @@ class IntesisACWM {
                     headers: {
                         'Content-Type': 'application/json',
                         'Content-Length': payload.length
-                    }
+                    },
+                    timeout: 2000,
                 }
                 const req = http.request(options, (res) => {
                     res.on('data', async (d) => {
@@ -93,33 +91,23 @@ class IntesisACWM {
                         }
                         reject(result);
                     })
-                })
-
-                req.on('error', (error) => {
-                    reject(error)
-                })
-
-                req.write(payload)
-                req.end()
+                });
+                req.on('error', (err) => reject(err));
+                req.write(payload);
+                req.end();
             }
         )
     }
 
     // getInfo: get info about the unit
     // This function does not need autorization
-    getInfo() {
-        return new Promise((resolve, reject) => {
-            this.writeCommand('getinfo', null)
-                .then(result => {
-                    if (result.success) {
-                        this.info = result.data.info
-                        resolve(this.info)
-                    } else {
-                        reject(result)
-                    }
-                })
-                .catch(error => reject(error))
-        })
+    async getInfo() {
+        let result = await this.writeCommand('getinfo', null)
+        if (result.success) {
+            this.info = result.data.info
+            return this.info;
+        }
+        throw result;
     }
 
     // Login to the web interface (most functions need authorization to work)
@@ -151,48 +139,30 @@ class IntesisACWM {
         return this.session
     }
 
-    getCurrentConfig() {
-        return new Promise((resolve, reject) => {
-            this.writeCommand('getcurrentconfig', {sessionID: this.session})
-                .then(result => {
-                    if (result.success) {
-                        resolve(result.data.config)
-                    } else {
-                        reject(result)
-                    }
-                })
-                .catch(error => reject(error))
-        })
+    async getCurrentConfig() {
+        let result = await this.writeCommand('getcurrentconfig', {sessionID: this.session})
+        if (result.success) {
+            return result.data.config;
+        }
+        throw result;
     }
 
     // getAvailableDataPoints: return the list of uids of the datapoints that are supported by this device
-    getAvailableDataPoints() {
-        return new Promise((resolve, reject) => {
-            this.writeCommand('getavailabledatapoints', {sessionID: this.session})
-                .then(result => {
-                    if (result.success) {
-                        resolve(result.data.dp.datapoints)
-                    } else {
-                        reject(result)
-                    }
-                })
-                .catch(error => reject(error))
-        })
+    async getAvailableDataPoints() {
+        let result = await this.writeCommand('getavailabledatapoints', {sessionID: this.session});
+        if (result.success) {
+            return result.data.dp.datapoints;
+        }
+        throw result;
     }
 
     // getDataPointValue: get the value of a certain datapoint (use 'null' to get all)
-    getDataPointValue(uid) {
-        return new Promise((resolve, reject) => {
-            this.writeCommand('getdatapointvalue', {sessionID: this.session, uid: uid || 'all'})
-                .then(result => {
-                    if (result.success) {
-                        resolve(result.data.dpval)
-                    } else {
-                        reject(result)
-                    }
-                })
-                .catch(error => reject(error))
-        })
+    async getDataPointValue(uid) {
+        let result = await this.writeCommand('getdatapointvalue', {sessionID: this.session, uid: uid || 'all'})
+        if (result.success) {
+            return result.data.dpval;
+        }
+        throw result;
     }
 
     // setDataPointValue:
