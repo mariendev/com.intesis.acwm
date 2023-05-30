@@ -219,11 +219,11 @@ export class MhAcWifi1 extends Homey.Device {
         try {
             await this.api.login(username, password);
         } catch (e: any) {
-            this.error('Login error: ' + e.error.message);
+            this.error('Login error: ' + (e?.error?.message ?? 'Unknown'));
             if (throwError) {
-                throw Error(e.error.message);
+                throw Error(e?.error?.message ?? 'Unknown');
             }
-            await this.setUnavailable('Error ' + e.error.message);
+            await this.setUnavailable('Error ' + (e?.error?.message ?? 'Unknown'));
             if (e.error.code !== 5) {
                 this.error(e);
             }
