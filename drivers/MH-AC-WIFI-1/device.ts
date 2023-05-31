@@ -224,7 +224,7 @@ export class MhAcWifi1 extends Homey.Device {
                 throw Error(e?.error?.message ?? 'Unknown');
             }
             await this.setUnavailable('Error ' + (e?.error?.message ?? 'Unknown'));
-            if (e.error.code !== 5) {
+            if (e?.error?.code !== 5) {
                 this.error(e);
             }
             return;
