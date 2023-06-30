@@ -40,6 +40,9 @@
     "email": "marien@sitsat.nl"
   },
   "source": "https://github.com/mariendev/com.intesis.acwm",
+  "bugs": {
+    "url": "https://github.com/mariendev/com.intesis.acwm/issues"
+  },
   "flow": {
     "triggers": [
       {
