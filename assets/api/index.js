@@ -71,7 +71,15 @@ class IntesisACWM {
                 }
                 const req = http.request(options, (res) => {
                     res.on('data', async (d) => {
-                        let result = JSON.parse(d)
+                        let result;
+
+                        try {
+                            result = JSON.parse(d);
+                        } catch {
+                            reject('not a json response');
+                            return;
+                        }
+
                         result.code = res.statusCode;
 
                         if (result.success) {
