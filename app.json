@@ -40,6 +40,13 @@
     "email": "marien@sitsat.nl"
   },
   "source": "https://github.com/mariendev/com.intesis.acwm",
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "mariendenbesten"
+      }
+    }
+  },
   "bugs": {
     "url": "https://github.com/mariendev/com.intesis.acwm/issues"
   },
